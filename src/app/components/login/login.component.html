@@ -1,0 +1,9 @@
+<form (ngSubmit)="sendData()">
+    <label for="inputLogin">Login:</label>
+    <input type="text" id="inputLogin" placeholder="login" [(ngModel)]="login" name="a">
+    <br><br>
+    <label for="inputPassword">Password:</label>
+    <input type="text" id="inputPassword" placeholder="password" [(ngModel)]="password" name="b"><br>
+    <button type="submit">Submit</button>
+</form>
+
