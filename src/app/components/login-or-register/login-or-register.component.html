@@ -1,5 +1,8 @@
-<div *ngIf="isShown">
-    <button type="submit" (click)="goToLogin()">логин</button><br>
-    <button type="submit" (click)="goToRegister()">регистрация</button>
+<div *ngIf="isShown" class="center-log-reg-comp">
+    <p >You need to login or register</p>
+    <div>
+        <button type="submit" (click)="goToLogin()">логин</button><br><br>
+        <button type="submit" (click)="goToRegister()">регистрация</button>
+    </div>
 </div>
 <router-outlet></router-outlet>

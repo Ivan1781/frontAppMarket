@@ -1,0 +1,6 @@
+<div>
+    <h3>Upload a Photo</h3>
+    <input type="file" (change)="onFileSelected($event)" accept="jpg/*">
+    <button (click)="uploadPhoto()">Upload</button>
+</div>
+<img [src]="imageUrl" alt="Uploaded Photo">

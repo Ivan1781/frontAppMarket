@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { HttpResponse } from '@angular/common/http';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ResponceTokenDto } from 'src/app/models/response-token.dto';
 import { AuthResponseDTO } from 'src/app/models/token.dto';
 import { LoginDataService } from 'src/app/services/login-data.service';
 
@@ -14,21 +14,24 @@ import { LoginDataService } from 'src/app/services/login-data.service';
 export class LoginComponent {
   login:string = ''
   password:string = ''
+  error:  string = ''
 
   constructor(private loginDataService: LoginDataService, private router: Router){}
 
   sendData(){
-    
-    const a: Observable<AuthResponseDTO> = this.loginDataService.loginUser(this.login, this.password)
-    a.subscribe({
+    const loginReaponse: Observable<HttpResponse<AuthResponseDTO>> = this.loginDataService
+    .loginUser(this.login, this.password)
+    loginReaponse.subscribe({
       next: (response) => {
-        console.log(`Token of response: ${response.accessToken}`)
-        // if (response.status === "200"){
-          // this.router.navigateByUrl('/api/userrrr')
-        // }
-      },
-      error: (error)=> {console.log(error)}
-
-  })
+          if (response.status == 200){
+            const jwtToken = localStorage.setItem('token',
+             `${response.body?.tokenType} ${response.body?.accessToken}`);
+            this.router.navigateByUrl('/api/user')
+          }
+        },
+      error: (error)=> {
+        this.error = "Oh, shit. You screw up. Try again"
+        console.log(error)}
+    })
   }
 }

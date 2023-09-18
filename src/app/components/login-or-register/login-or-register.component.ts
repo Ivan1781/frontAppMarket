@@ -12,7 +12,7 @@ export class LoginOrRegisterComponent {
   isShown:boolean = true;
 
   goToRegister(){
-    this.isShown=false;
+    this.isShown=false; 
     this.router.navigate(['/api/auth/register']);
   }
 
