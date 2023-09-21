@@ -1,1 +1,12 @@
-<p>registration works!</p>
+<div class="center-log-comp">
+    <p>please, sign up</p>
+        <form (ngSubmit)="signUp()">
+            <label for="inputUsername">Username:</label>
+            <input type="text" id="inputUsername" placeholder="username" [(ngModel)]="login" name="a">
+            <br><br>
+            <label for="inputPassword">Password:</label>
+            <input type="text" id="inputPassword" placeholder="password" [(ngModel)]="password" name="b"><br>
+            <button type="submit">sign up</button>
+        </form>
+    <b>{{error}}</b>
+</div>
