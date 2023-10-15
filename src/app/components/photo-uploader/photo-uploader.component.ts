@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LogoutService } from 'src/app/services/logout.service';
 import { UploadPhotoService } from 'src/app/services/upload-photo.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UploadPhotoService } from 'src/app/services/upload-photo.service';
 })
 export class PhotoUploaderComponent {
 
-  constructor (private uploader: UploadPhotoService) {}
+  constructor (private uploader: UploadPhotoService, private logoutService: LogoutService) {}
 
   imageUrl: string | ArrayBuffer | null;
   selectedFile: File | null;
@@ -33,5 +34,9 @@ export class PhotoUploaderComponent {
       this.uploader.sendFile(this.selectedFile)
     }
     else console.log('File is absent')
+  }
+
+  logout(){
+    this.logoutService.logOut();
   }
 }
