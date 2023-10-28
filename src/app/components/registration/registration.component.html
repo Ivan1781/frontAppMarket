@@ -1,12 +1,17 @@
-<div class="center-log-comp">
-    <p>please, sign up</p>
+<div  class="min-h-screen flex items-center justify-center bg-slate-200">
+    <div class="bg-white p-8 shadow-md rounded-md w-96">
+      <h2 class="text-2xl font-semibold mb-6">Sign Up</h2>
         <form (ngSubmit)="signUp()">
-            <label for="inputUsername">Username:</label>
-            <input type="text" id="inputUsername" placeholder="username" [(ngModel)]="login" name="a">
-            <br><br>
-            <label for="inputPassword">Password:</label>
-            <input type="text" id="inputPassword" placeholder="password" [(ngModel)]="password" name="b"><br>
-            <button type="submit">sign up</button>
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                <input type="text" id="username" class="w-full border border-gray-300 rounded-md p-2" [(ngModel)]="login" name="a" placeholder="Enter your username"/>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input type="password" id="password" class="w-full border border-gray-300 rounded-md p-2" [(ngModel)]="password" name="b" placeholder="Enter your password"/>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Sign Up</button>
         </form>
-    <b>{{error}}</b>
+      <b>{{error}}</b>
+    </div>
 </div>
